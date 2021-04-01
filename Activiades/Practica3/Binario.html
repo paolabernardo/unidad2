@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>Funciones basicas</title>
+</head>  
+<body>
+  <h1>Programa que convierte un n&uacute;mero en binario</h1>
+  <form>
+     <label >Introduce el numero</label>
+     <input type="text"   id="num" name="numero" value="">
+     <button type="button" onclick="esbinario(num.value)">Convertir</button>
+     <button type="button" onclick="limpiar()">Limpiar</button>
+     <input type="button" onClick="cierra();" value="Cerrar"/>
+  </form>
+
+  <script type="text/javascript">
+
+    function limpiar(){
+      parrafo = document.getElementsByTagName('p')[0];
+      parrafo.parentNode.removeChild(parrafo);
+    }
+
+    function esbinario(numero){
+          var resultado = binario(numero);
+          parrafo = document.createElement("p");
+          contenido = document.createTextNode("El número "+numero+" en binario es "+resultado);  
+          parrafo.appendChild(contenido);
+          document.body.appendChild(parrafo);
+          document.getElementById("num").value="";
+    }
+
+    function binario(numero){
+
+      var mod;
+      var bin="";
+
+      while(numero>0){
+        mod=numero % 2;
+        bin=mod+bin;
+        numero=Math.floor(numero/2);
+      }
+      return bin;
+    }
+
+    function cierra(){
+    	if (confirm("¿Quieres cerrar la ventana?")){
+          window.close();
+      }
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>Funciones basicas</title>
+</head>  
+<body>
+  <h1>Programa que convierte un n&uacute;mero en hexadecimal</h1>
+  <form>
+     <label >Introduce el numero</label>
+     <input type="text"   id="num" name="numero" value="">
+     <button type="button" onclick="eshexadecimal(num.value)">Convertir</button>
+     <button type="button" onclick="limpiar()">Limpiar</button>
+     <input type="button" onClick="cierra();" value="Cerrar"/>
+  </form>
+
+  <script type="text/javascript">
+
+    function limpiar(){
+      parrafo = document.getElementsByTagName('p')[0];
+      parrafo.parentNode.removeChild(parrafo);
+    }
+
+    function eshexadecimal(numero){
+             var resultado = hexadecimal(numero);
+             parrafo = document.createElement("p");
+             contenido = document.createTextNode("El numero "+numero+" es "+resultado);  
+             parrafo.appendChild(contenido);
+             document.body.appendChild(parrafo);
+             document.getElementById("num").value="";
+    }
+
+
+      function hexadecimal(numero){
+        var mod2;
+        var aux2;
+        var hex="";
+        while(numero>0){
+          mod2=numero % 16;
+            if(mod2>9){
+                hex=""+residuo(mod2)+hex;
+            }
+            else{
+                hex=""+mod2+hex;
+            }
+          numero=Math.floor(numero/16);
+          aux2++;
+        }
+        return hex;
+      }
+
+      function residuo(mod2){
+        switch(mod2){
+            case 10: return 'A';
+            case 11: return 'B';
+            case 12: return 'C';
+            case 13: return 'D';
+            case 14: return 'E';
+            case 15: return 'F';
+        }
+      }
+
+      function cierra(){
+    		  if (confirm("¿Quieres cerrar la ventana?")){
+            window.close();
+          }
+    	}
+
+</script>
+
+</body>
+</html>

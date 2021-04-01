@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>Funciones b&aacute;sicas</title>
+</head>
+<body>
+  <h1>Programa que calcula un n&uacute;mero en binario y hexadecimal</h1>
+  <form>
+     <label >Introduce el n&uacute;mero</label>
+     <input type="text"   id="num" name="numero" value="">
+     <button type="button" onclick="esbinario(num.value)">Binario</button>
+     <button type="button" onclick="eshexadecimal(num.value)">Hexadecimal</button>
+     <button type="button" onclick="limpiar()">Limpiar</button>
+  </form>
+
+  <script type="text/javascript">
+
+    function esbinario(numero){
+         var resultado = binario(numero);
+         parrafo = document.createElement("p");
+         contenido = document.createTextNode("El numero "+numero+" es "+resultado);
+         parrafo.appendChild(contenido);
+         document.body.appendChild(parrafo);
+         document.getElementById("num").value="";
+      }
+
+    function binario(numero){
+      var mod;
+      var bin="";
+      while(numero>0){
+        mod=numero % 2;
+        bin=mod+bin;
+        numero=Math.floor(numero/2);
+      }
+      return bin;
+    }
+
+    function eshexadecimal(numero){
+         var resultado = hexadecimal(numero);
+         parrafo = document.createElement("p");
+         contenido = document.createTextNode("El numero "+numero+" es "+resultado);  
+         parrafo.appendChild(contenido);
+         document.body.appendChild(parrafo);
+         document.getElementById("num").value="";
+      }
+
+      function hexadecimal(numero){
+        var mod2;
+        var aux2;
+        var hex="";
+        while(numero>0){
+          mod2=numero % 16;
+            if(mod2>9)
+                hex=""+residuo(mod2)+hex;
+            else
+                hex=""+mod2+hex;
+
+          numero=Math.floor(numero/16);
+          aux2++;
+        }
+        return hex;
+      }
+
+      function residuo(mod2){
+        switch(mod2){
+            case 10: return 'A';
+            case 11: return 'B';
+            case 12: return 'C';
+            case 13: return 'D';
+            case 14: return 'E';
+            case 15: return 'F';
+        }
+      }
+
+      function limpiar(){
+        parrafo = document.getElementsByTagName('p')[0];
+        parrafo.parentNode.removeChild(parrafo);
+      }
+
+</script>
+<DIV ALIGN="right">
+  <a href="../../index.html"> <img src="https://turismo-en-mi-pais.webnode.mx/_files/200000043-06c4507be3/450/boton_regresar.png" alt="REGRESAR" width="10%"> </a>
+  </DIV>
+</body>
+</html>
